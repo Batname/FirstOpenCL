@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D3109421E52431A004A214C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3109411E52431A004A214C /* main.cpp */; };
+		4D31094A1E524455004A214C /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3109491E524455004A214C /* OpenCL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4D31093E1E52431A004A214C /* FirstOpenCL */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FirstOpenCL; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D3109411E52431A004A214C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4D3109491E524455004A214C /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D31094A1E524455004A214C /* OpenCL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +46,7 @@
 			children = (
 				4D3109401E52431A004A214C /* FirstOpenCL */,
 				4D31093F1E52431A004A214C /* Products */,
+				4D3109481E524455004A214C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +64,14 @@
 				4D3109411E52431A004A214C /* main.cpp */,
 			);
 			path = FirstOpenCL;
+			sourceTree = "<group>";
+		};
+		4D3109481E524455004A214C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D3109491E524455004A214C /* OpenCL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,14 +228,18 @@
 		4D3109461E52431A004A214C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OBJROOT = /Volumes/SEAGATE/Mac/Debug/OpenCL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = /Volumes/SEAGATE/Mac/Debug/OpenCL;
 			};
 			name = Debug;
 		};
 		4D3109471E52431A004A214C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OBJROOT = /Volumes/SEAGATE/Mac/Debug/OpenCL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = /Volumes/SEAGATE/Mac/Debug/OpenCL;
 			};
 			name = Release;
 		};
@@ -246,6 +262,7 @@
 				4D3109471E52431A004A214C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
