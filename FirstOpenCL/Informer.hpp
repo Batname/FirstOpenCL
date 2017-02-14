@@ -20,8 +20,8 @@ protected:
 private:
     cl_uint PlatformCount;
     cl_platform_id* Platforms;
-    cl_uint DevicesCount;
-    cl_device_id* Devices;
+    cl_uint* DevicesCount;
+    cl_device_id** Devices;
     
     char** PlatformAttributeNames;
     cl_platform_info* PlatformAttributeTypes;
