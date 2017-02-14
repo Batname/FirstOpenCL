@@ -5,6 +5,9 @@
 // Include OpenCL lib
 #include <OpenCL/opencl.h>
 
+// custiom libs
+#include "Informer.hpp"
+
 // Constant
 enum Constants
 {
@@ -13,6 +16,10 @@ enum Constants
 };
 
 int main(int argc, const char * argv[]) {
+    Informer informer;
+    return 0;
+    
+    
     // Define variables
     cl_uint PlatformCount;
     cl_platform_id* Platforms;
