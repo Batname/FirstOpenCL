@@ -2,7 +2,8 @@
 #include <string.h>
 #include <stdio.h>
 
-Informer::Informer()
+Informer::Informer(Status status) :
+    status(status)
 {
     // 1. Define platform info to print
     const char* platformAttributeNames[] =
@@ -81,12 +82,16 @@ Informer::~Informer()
 
 void Informer::PrintPlatformCount() const
 {
+    if (status == I_RELEASE) return;
+    
     printf(">> Platform Count is: %i\n", PlatformCount);
     printf("\n");
 }
 
 void Informer::PrintDeviceCount() const
 {
+    if (status == I_RELEASE) return;
+    
     for(size_t i = 0; i < PlatformCount; i++)
     {
         printf(">> Platform #%i\n", PlatformCount);
@@ -97,6 +102,8 @@ void Informer::PrintDeviceCount() const
 
 void Informer::PrintPlatfromsInfo()
 {
+    if (status == I_RELEASE) return;
+    
     size_t InfoSize;
     char* Info;
     
@@ -123,6 +130,8 @@ void Informer::PrintPlatfromsInfo()
 
 void Informer::PrintDevicesInfo()
 {
+    if (status == I_RELEASE) return;
+    
     size_t InfoSize;
     char* Info;
     cl_uint MaxComputeUnits;

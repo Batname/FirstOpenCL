@@ -10,17 +10,20 @@
 		4D3109421E52431A004A214C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3109411E52431A004A214C /* main.cpp */; };
 		4D31094A1E524455004A214C /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3109491E524455004A214C /* OpenCL.framework */; };
 		4D31094D1E525980004A214C /* Informer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D31094B1E525980004A214C /* Informer.cpp */; };
+		4DD6A6BD1E532131007DA457 /* hello.cl in Copy Files */ = {isa = PBXBuildFile; fileRef = 4DD6A6BC1E5320C2007DA457 /* hello.cl */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		4D31093C1E52431A004A214C /* CopyFiles */ = {
+		4D31093C1E52431A004A214C /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				4DD6A6BD1E532131007DA457 /* hello.cl in Copy Files */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -30,6 +33,7 @@
 		4D3109491E524455004A214C /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		4D31094B1E525980004A214C /* Informer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Informer.cpp; sourceTree = "<group>"; };
 		4D31094C1E525980004A214C /* Informer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Informer.hpp; sourceTree = "<group>"; };
+		4DD6A6BC1E5320C2007DA457 /* hello.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = hello.cl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		4D3109401E52431A004A214C /* FirstOpenCL */ = {
 			isa = PBXGroup;
 			children = (
+				4DD6A6BB1E53209F007DA457 /* kernel */,
 				4D3109411E52431A004A214C /* main.cpp */,
 				4D31094B1E525980004A214C /* Informer.cpp */,
 				4D31094C1E525980004A214C /* Informer.hpp */,
@@ -79,6 +84,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4DD6A6BB1E53209F007DA457 /* kernel */ = {
+			isa = PBXGroup;
+			children = (
+				4DD6A6BC1E5320C2007DA457 /* hello.cl */,
+			);
+			name = kernel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,7 +101,7 @@
 			buildPhases = (
 				4D31093A1E52431A004A214C /* Sources */,
 				4D31093B1E52431A004A214C /* Frameworks */,
-				4D31093C1E52431A004A214C /* CopyFiles */,
+				4D31093C1E52431A004A214C /* Copy Files */,
 			);
 			buildRules = (
 			);

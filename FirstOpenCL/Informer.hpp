@@ -7,7 +7,12 @@
 class Informer
 {
 public:
-    Informer();
+    enum Status
+    {
+        I_DEBUG, I_RELEASE
+    };
+    
+    explicit Informer(Status status);
     ~Informer();
     
     void PrintPlatformCount() const;
@@ -15,7 +20,7 @@ public:
     
     void PrintPlatfromsInfo();
     void PrintDevicesInfo();
-
+    
 protected:
 private:
     cl_uint PlatformCount;
@@ -30,6 +35,7 @@ private:
     cl_device_info* DeviceAttributeTypes;
     int DeviceAttributeCount;
     
+    Status status;
 };
 
 #endif /* Informer_hpp */
