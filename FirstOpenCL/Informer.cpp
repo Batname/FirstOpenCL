@@ -1,4 +1,6 @@
 #include "Informer.hpp"
+#include "Executer.hpp"
+
 #include <string.h>
 #include <stdio.h>
 
@@ -164,4 +166,24 @@ void Informer::PrintDevicesInfo()
             printf("\n");
         }
     }
+}
+
+void Informer::PrintExecuterInfo(Executer* executer)
+{
+    size_t InfoSize;
+    char* Info;
+    
+    printf(">> Platforms #%i\n", executer->PlatformCount);
+    printf(">> Devices count #%i\n", executer->DevicesCount);
+    
+    clGetDeviceInfo(executer->DeviceID, CL_DEVICE_NAME, 0, nullptr, &InfoSize);
+    Info = (char*) malloc(InfoSize);
+    clGetDeviceInfo(executer->DeviceID, CL_DEVICE_NAME, InfoSize, Info, nullptr);
+    
+    printf(">> %lu. %s: %s\n", 1, "Name", Info);
+    
+    // Deallocate
+    free(Info);
+
+    printf("\n");
 }

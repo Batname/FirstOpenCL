@@ -21,6 +21,8 @@ public:
     void PrintPlatfromsInfo();
     void PrintDevicesInfo();
     
+    static void PrintExecuterInfo(class Executer* executer);
+    
 protected:
 private:
     cl_uint PlatformCount;
