@@ -50,6 +50,8 @@
 		4D3109491E524455004A214C /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
 		4D31094B1E525980004A214C /* Informer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Informer.cpp; sourceTree = "<group>"; };
 		4D31094C1E525980004A214C /* Informer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Informer.hpp; sourceTree = "<group>"; };
+		4D7500901E562A19004E36DC /* test.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
+		4D7500921E562F21004E36DC /* test.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = test.cl; sourceTree = "<group>"; };
 		4DBDA7521E5489C300126E16 /* Executer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Executer.cpp; sourceTree = "<group>"; };
 		4DBDA7531E5489C300126E16 /* Executer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Executer.hpp; sourceTree = "<group>"; };
 		4DBDA7551E54B95700126E16 /* MyExecuter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyExecuter.cpp; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		4D3109401E52431A004A214C /* FirstOpenCL */ = {
 			isa = PBXGroup;
 			children = (
+				4D7500911E562F0B004E36DC /* Test */,
 				4DBDA7581E54BE7000126E16 /* Executers */,
 				4D3109411E52431A004A214C /* main.cpp */,
 				4D31094B1E525980004A214C /* Informer.cpp */,
@@ -103,6 +106,15 @@
 				4D3109491E524455004A214C /* OpenCL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D7500911E562F0B004E36DC /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				4D7500901E562A19004E36DC /* test.c */,
+				4D7500921E562F21004E36DC /* test.cl */,
+			);
+			name = Test;
 			sourceTree = "<group>";
 		};
 		4DBDA7581E54BE7000126E16 /* Executers */ = {

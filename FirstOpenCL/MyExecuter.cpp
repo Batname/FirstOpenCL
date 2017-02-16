@@ -20,7 +20,7 @@ MyExecuter::MyExecuter(KernelFile kFile, int memSize) :
 
     
     // 9. Set OpenCl kernel parametrs
-    ErrRet = clSetKernelArg(Kernel, 0, sizeof(cl_mem), (void *)&MemObject);
+    ErrRet |= clSetKernelArg(Kernel, 0, sizeof(cl_mem), (void *)&MemObject);
     CheckStatus("clSetKernelArg", &ErrRet);
     
     // 10. Execute OpenCL Kernel
