@@ -9,7 +9,8 @@ class Executer
 public:
     enum Constants
     {
-        MAX_SOURCE_SIZE = 0x10000
+        MAX_SOURCE_SIZE = 0x10000,
+        MAX_BINARY_SIZE = 0x100000
     };
     
     enum class FileType
@@ -30,8 +31,10 @@ public:
 protected:
     cl_int TempRet;
     
-    char* SourceString;
+    unsigned char* SourceBuffer;
     size_t SourceSize;
+    
+    cl_int BinaryStatus;
     
     cl_platform_id PlatformID = nullptr;
     cl_uint PlatformCount;

@@ -5,6 +5,7 @@
 //  Created by bat on 2/15/17.
 //  Copyright © 2017 batlab. All rights reserved.
 //
+// https://developer.apple.com/library/content/samplecode/OpenCLOfflineCompilation/Listings/main_c.html#//apple_ref/doc/uid/DTS40011196-main_c-DontLinkElementID_5
 
 #include "MyExecuter.hpp"
 

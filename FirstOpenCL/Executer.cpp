@@ -15,8 +15,8 @@ Executer::Executer(KernelFile kFile, int memSize) :
         fprintf(stderr, "Failed to load kernel.\n");
         exit(EXIT_FAILURE);
     }
-    SourceString = (char*) malloc(MAX_SOURCE_SIZE);
-    SourceSize = fread(SourceString, 1, MAX_SOURCE_SIZE, fp);
+    SourceBuffer = (unsigned char*) malloc(MAX_BINARY_SIZE);
+    SourceSize = fread(SourceBuffer, 1, MAX_BINARY_SIZE, fp);
     fclose(fp);
     
     // 2. Get Platform and Device Info
@@ -37,18 +37,27 @@ Executer::Executer(KernelFile kFile, int memSize) :
     MemObject = clCreateBuffer(Context, CL_MEM_READ_WRITE, MemSize, nullptr, &TempRet);
     assert(TempRet == 0 && "Error while allocation MemObject");
     
-    // 6. Create kernel program from source
-    Program = clCreateProgramWithSource(Context, 1, (const char**)&SourceString, (const size_t*)&SourceSize, &TempRet);
-    assert(TempRet == 0 && "Error while Kernel program creation");
+    if (kFile.type == FileType::EText)
+    {
+        // 6. Create kernel program from source
+        Program = clCreateProgramWithSource(Context, 1, (const char**)&SourceBuffer, (const size_t*)&SourceSize, &TempRet);
+        assert(TempRet == 0 && "Error while Kernel program creation");
+    }
+    else if (kFile.type == FileType::EBinary)
+    {
+        // 6. Create kernel program from binary
+        Program = clCreateProgramWithBinary(Context, 1, &DeviceID, (const size_t*)&SourceSize, (const unsigned char **)&SourceBuffer, &BinaryStatus, &TempRet);
+        assert(TempRet == 0 && "Error while Build the program from binary");
+    }
     
     // 7. Build kernel program
     TempRet = clBuildProgram(Program, 1, &DeviceID, nullptr, nullptr, nullptr);
-    assert(TempRet == 0 && "Error while Build the program");
+    assert(TempRet == 0 && "Error while Build the program from text");
 }
 
 Executer::~Executer()
 {
-    free(SourceString);
+    free(SourceBuffer);
     
     clFlush(CommandQueue);
     clFinish(CommandQueue);

@@ -28,8 +28,8 @@ int main(int argc, const char * argv[]) {
     
     // Execute
     MyExecuter::KernelFile kFile = {
-        "./hello.cl",
-        MyExecuter::FileType::EText
+        "./hello.clbin",
+        MyExecuter::FileType::EBinary
     };
     
     MyExecuter executer(kFile, 128 * sizeof(char));

@@ -10,10 +10,25 @@
 		4D3109421E52431A004A214C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D3109411E52431A004A214C /* main.cpp */; };
 		4D31094A1E524455004A214C /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D3109491E524455004A214C /* OpenCL.framework */; };
 		4D31094D1E525980004A214C /* Informer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D31094B1E525980004A214C /* Informer.cpp */; };
+		4D75008F1E56245D004E36DC /* hello.cl in Sources */ = {isa = PBXBuildFile; fileRef = 4DD6A6BC1E5320C2007DA457 /* hello.cl */; };
 		4DBDA7541E5489C300126E16 /* Executer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDA7521E5489C300126E16 /* Executer.cpp */; };
 		4DBDA7571E54B95700126E16 /* MyExecuter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4DBDA7551E54B95700126E16 /* MyExecuter.cpp */; };
 		4DD6A6BD1E532131007DA457 /* hello.cl in Copy Files */ = {isa = PBXBuildFile; fileRef = 4DD6A6BC1E5320C2007DA457 /* hello.cl */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		4D75008E1E562403004E36DC /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.cl";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"/Volumes/SEAGATE/Mac/Debug/OpenCL/Debug/${INPUT_FILE_BASE}.clbin",
+			);
+			script = "/System/Library/Frameworks/OpenCL.framework/Libraries/openclc -emit-llvm -c -arch gpu_64 ${INPUT_FILE_PATH} -o ${SCRIPT_OUTPUT_FILE_0}";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4D31093C1E52431A004A214C /* Copy Files */ = {
@@ -122,6 +137,7 @@
 				4D31093C1E52431A004A214C /* Copy Files */,
 			);
 			buildRules = (
+				4D75008E1E562403004E36DC /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -167,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D75008F1E56245D004E36DC /* hello.cl in Sources */,
 				4D3109421E52431A004A214C /* main.cpp in Sources */,
 				4DBDA7541E5489C300126E16 /* Executer.cpp in Sources */,
 				4DBDA7571E54B95700126E16 /* MyExecuter.cpp in Sources */,
