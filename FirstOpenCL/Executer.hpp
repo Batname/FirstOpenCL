@@ -6,14 +6,26 @@
 
 class Executer
 {
-private:
+public:
     enum Constants
     {
         MAX_SOURCE_SIZE = 0x10000
     };
     
+    enum class FileType
+    {
+        EBinary, EText
+    };
+    
+    struct KernelFile
+    {
+        const char* fileName;
+        FileType type;
+        
+    };
+    
 public:
-    explicit Executer(const char* fileName, int memSize);
+    explicit Executer(KernelFile kFile, int memSize);
     ~Executer();
 protected:
     cl_int TempRet;

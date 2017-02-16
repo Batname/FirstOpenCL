@@ -15,7 +15,7 @@
 class MyExecuter : public Executer
 {
 public:
-    explicit MyExecuter(const char* fileName, int memSize);
+    explicit MyExecuter(KernelFile kFile, int memSize);
     ~MyExecuter();
     
     void PrintResult();

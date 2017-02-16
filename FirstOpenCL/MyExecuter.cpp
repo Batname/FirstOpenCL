@@ -10,8 +10,8 @@
 
 #include <assert.h>
 
-MyExecuter::MyExecuter(const char* fileName, int memSize) :
-    Executer(fileName, memSize)
+MyExecuter::MyExecuter(KernelFile kFile, int memSize) :
+    Executer(kFile, memSize)
 {
     // 8. Create OpenCL kernel
     Kernel = clCreateKernel(Program, "hello", &TempRet);

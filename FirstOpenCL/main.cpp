@@ -27,7 +27,12 @@ int main(int argc, const char * argv[]) {
     informer.PrintDevicesInfo();
     
     // Execute
-    MyExecuter executer("./hello.cl", 128 * sizeof(char));
+    MyExecuter::KernelFile kFile = {
+        "./hello.cl",
+        MyExecuter::FileType::EText
+    };
+    
+    MyExecuter executer(kFile, 128 * sizeof(char));
     executer.PrintResult();
     
     // Print Executer log

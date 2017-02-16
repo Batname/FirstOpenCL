@@ -3,13 +3,13 @@
 #include <stdlib.h>
 #include <assert.h>
 
-Executer::Executer(const char* fileName, int memSize) :
+Executer::Executer(KernelFile kFile, int memSize) :
     MemSize(memSize)
 {
 
     // 1. Open the source file
     FILE* fp;
-    fp = fopen(fileName, "r");
+    fp = fopen(kFile.fileName, "r");
     if (!fp)
     {
         fprintf(stderr, "Failed to load kernel.\n");
