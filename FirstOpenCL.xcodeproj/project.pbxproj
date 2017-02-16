@@ -74,14 +74,10 @@
 		4D3109401E52431A004A214C /* FirstOpenCL */ = {
 			isa = PBXGroup;
 			children = (
-				4DD6A6BB1E53209F007DA457 /* kernel */,
+				4DBDA7581E54BE7000126E16 /* Executers */,
 				4D3109411E52431A004A214C /* main.cpp */,
 				4D31094B1E525980004A214C /* Informer.cpp */,
 				4D31094C1E525980004A214C /* Informer.hpp */,
-				4DBDA7521E5489C300126E16 /* Executer.cpp */,
-				4DBDA7531E5489C300126E16 /* Executer.hpp */,
-				4DBDA7551E54B95700126E16 /* MyExecuter.cpp */,
-				4DBDA7561E54B95700126E16 /* MyExecuter.hpp */,
 			);
 			path = FirstOpenCL;
 			sourceTree = "<group>";
@@ -92,6 +88,18 @@
 				4D3109491E524455004A214C /* OpenCL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DBDA7581E54BE7000126E16 /* Executers */ = {
+			isa = PBXGroup;
+			children = (
+				4DD6A6BB1E53209F007DA457 /* kernel */,
+				4DBDA7521E5489C300126E16 /* Executer.cpp */,
+				4DBDA7531E5489C300126E16 /* Executer.hpp */,
+				4DBDA7551E54B95700126E16 /* MyExecuter.cpp */,
+				4DBDA7561E54B95700126E16 /* MyExecuter.hpp */,
+			);
+			name = Executers;
 			sourceTree = "<group>";
 		};
 		4DD6A6BB1E53209F007DA457 /* kernel */ = {
