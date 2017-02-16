@@ -15,25 +15,25 @@ MyExecuter::MyExecuter(KernelFile kFile, int memSize) :
     Executer(kFile, memSize)
 {
     // 8. Create OpenCL kernel
-    Kernel = clCreateKernel(Program, "hello", &TempRet);
-    assert(TempRet == 0 && "Error clCreateKernel");
+    Kernel = clCreateKernel(Program, "hello", &ErrRet);
+    CheckStatus("clCreateKernel", &ErrRet);
 
     
     // 9. Set OpenCl kernel parametrs
-    TempRet = clSetKernelArg(Kernel, 0, sizeof(cl_mem), (void *)&MemObject);
-    assert(TempRet == 0 && "Error clSetKernelArg");
+    ErrRet = clSetKernelArg(Kernel, 0, sizeof(cl_mem), (void *)&MemObject);
+    CheckStatus("clSetKernelArg", &ErrRet);
     
     // 10. Execute OpenCL Kernel
-    TempRet = clEnqueueTask(CommandQueue, Kernel, 0, nullptr, nullptr);
-    assert(TempRet == 0 && "Error clEnqueueTask");
+    ErrRet = clEnqueueTask(CommandQueue, Kernel, 0, nullptr, nullptr);
+    CheckStatus("clEnqueueTask", &ErrRet);
 }
 
 void MyExecuter::PrintResult()
 {
     char* StringResult[MemSize];
     // 11. Copy result from memory Buffer
-    TempRet = clEnqueueReadBuffer(CommandQueue, MemObject, CL_TRUE, 0, MemSize, StringResult, 0, nullptr, nullptr);
-    assert(TempRet == 0 && "Error clEnqueueReadBuffer");
+    ErrRet = clEnqueueReadBuffer(CommandQueue, MemObject, CL_TRUE, 0, MemSize, StringResult, 0, nullptr, nullptr);
+    CheckStatus("clEnqueueReadBuffer", &ErrRet);
     
     // 12. Display results
     printf(">> %s\n", StringResult);

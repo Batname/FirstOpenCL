@@ -21,38 +21,44 @@ Executer::Executer(KernelFile kFile, int memSize) :
     
     // 2. Get Platform and Device Info
     clGetPlatformIDs(1, &PlatformID, &PlatformCount);
-    assert(PlatformCount && "No platforms");
     clGetDeviceIDs(PlatformID, CL_DEVICE_TYPE_DEFAULT, 1, &DeviceID, &DevicesCount);
-    assert(DevicesCount && "No Devices");
 
     // 3. Create OpenCL Context
-    Context = clCreateContext(nullptr, 1, &DeviceID, nullptr, nullptr, &TempRet);
-    assert(TempRet == 0 && "Error while creation context");
+    Context = clCreateContext(nullptr, 1, &DeviceID, nullptr, nullptr, &ErrRet);
+    CheckStatus("clCreateContext", &ErrRet);
+
     
     // 4. Create command Queue
-    CommandQueue = clCreateCommandQueue(Context, DeviceID, 0, &TempRet);
-    assert(TempRet == 0 && "Error while creation CommandQueue");
+    CommandQueue = clCreateCommandQueue(Context, DeviceID, 0, &ErrRet);
+    CheckStatus("clCreateCommandQueue", &ErrRet);
     
     // 5. Create memory buffer
-    MemObject = clCreateBuffer(Context, CL_MEM_READ_WRITE, MemSize, nullptr, &TempRet);
-    assert(TempRet == 0 && "Error while allocation MemObject");
+    MemObject = clCreateBuffer(Context, CL_MEM_READ_WRITE, MemSize, nullptr, &ErrRet);
+    CheckStatus("clCreateBuffer", &ErrRet);
     
     if (kFile.type == FileType::EText)
     {
         // 6. Create kernel program from source
-        Program = clCreateProgramWithSource(Context, 1, (const char**)&SourceBuffer, (const size_t*)&SourceSize, &TempRet);
-        assert(TempRet == 0 && "Error while Kernel program creation");
+        Program = clCreateProgramWithSource(Context, 1, (const char**)&SourceBuffer, (const size_t*)&SourceSize, &ErrRet);
+        CheckStatus("clCreateProgramWithSource", &ErrRet);
     }
     else if (kFile.type == FileType::EBinary)
     {
         // 6. Create kernel program from binary
-        Program = clCreateProgramWithBinary(Context, 1, &DeviceID, (const size_t*)&SourceSize, (const unsigned char **)&SourceBuffer, &BinaryStatus, &TempRet);
-        assert(TempRet == 0 && "Error while Build the program from binary");
+        Program = clCreateProgramWithBinary(Context, 1, &DeviceID, (const size_t*)&SourceSize, (const unsigned char **)&SourceBuffer, &BinaryStatus, &ErrRet);
+        CheckStatus("clCreateProgramWithBinary", &ErrRet);
     }
     
     // 7. Build kernel program
-    TempRet = clBuildProgram(Program, 1, &DeviceID, nullptr, nullptr, nullptr);
-    assert(TempRet == 0 && "Error while Build the program from text");
+    ErrRet = clBuildProgram(Program, 1, &DeviceID, nullptr, nullptr, nullptr);
+    CheckStatus("clBuildProgram", &ErrRet);
+}
+
+void Executer::CheckStatus(const char* Msg, cl_int* Err) const
+{
+    if (*Err != CL_SUCCESS) {
+        fprintf(stderr, "%s failed. Error: %d\n", Msg, *Err);
+    }
 }
 
 Executer::~Executer()

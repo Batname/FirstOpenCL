@@ -29,7 +29,7 @@ public:
     explicit Executer(KernelFile kFile, int memSize);
     ~Executer();
 protected:
-    cl_int TempRet;
+    cl_int ErrRet;
     
     unsigned char* SourceBuffer;
     size_t SourceSize;
@@ -50,7 +50,8 @@ protected:
     cl_kernel Kernel = nullptr;
     
     int MemSize;
-        
+    
+    virtual void CheckStatus(const char* Msg, cl_int* Err) const;
 private:
     friend class Informer;
 };
