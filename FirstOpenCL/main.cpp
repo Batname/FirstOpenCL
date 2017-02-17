@@ -10,7 +10,8 @@
 
 // custiom libs
 #include "Informer.hpp"
-#include "MyExecuter.hpp"
+#include "Executer.hpp"
+#include "ParallelExecuter.hpp"
 
 // Constant
 enum Constants
@@ -27,12 +28,12 @@ int main(int argc, const char * argv[]) {
     informer.PrintDevicesInfo();
     
     // Execute
-    MyExecuter::KernelFile kFile = {
-        "./hello.clbin",
-        MyExecuter::FileType::EBinary
+    Executer::KernelFile kFile = {
+        "./dataParallel.clbin",
+        Executer::FileType::EBinary
     };
     
-    MyExecuter executer(kFile, 128 * sizeof(char));
+    ParallelExecuter executer(kFile);
     executer.PrintResult();
     
     // Print Executer log
