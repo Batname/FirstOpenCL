@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
-Executer::Executer(KernelFile kFile, int memSize) :
-    MemSize(memSize)
+Executer::Executer(KernelFile kFile)
 {
 
     // 1. Open the source file
@@ -32,24 +31,20 @@ Executer::Executer(KernelFile kFile, int memSize) :
     CommandQueue = clCreateCommandQueue(Context, DeviceID, 0, &ErrRet);
     CheckStatus("clCreateCommandQueue", &ErrRet);
     
-    // 5. Create memory buffer
-    MemObject = clCreateBuffer(Context, CL_MEM_READ_WRITE, MemSize, nullptr, &ErrRet);
-    CheckStatus("clCreateBuffer", &ErrRet);
-    
     if (kFile.type == FileType::EText)
     {
-        // 6. Create kernel program from source
+        // 5. Create kernel program from source
         Program = clCreateProgramWithSource(Context, 1, (const char**)&SourceBuffer, (const size_t*)&SourceSize, &ErrRet);
         CheckStatus("clCreateProgramWithSource", &ErrRet);
     }
     else if (kFile.type == FileType::EBinary)
     {
-        // 6. Create kernel program from binary
+        // 5. Create kernel program from binary
         Program = clCreateProgramWithBinary(Context, 1, &DeviceID, (const size_t*)&SourceSize, (const unsigned char **)&SourceBuffer, &BinaryStatus, &ErrRet);
         CheckStatus("clCreateProgramWithBinary", &ErrRet);
     }
     
-    // 7. Build kernel program
+    // 6. Build kernel program
     ErrRet = clBuildProgram(Program, 1, &DeviceID, nullptr, nullptr, nullptr);
     CheckStatus("clBuildProgram", &ErrRet);
 }
@@ -69,7 +64,6 @@ Executer::~Executer()
     clFinish(CommandQueue);
     clReleaseKernel(Kernel);
     clReleaseProgram(Program);
-    clReleaseMemObject(MemObject);
     clReleaseCommandQueue(CommandQueue);
     clReleaseContext(Context);
 }

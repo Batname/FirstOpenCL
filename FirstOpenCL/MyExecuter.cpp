@@ -12,8 +12,12 @@
 #include <assert.h>
 
 MyExecuter::MyExecuter(KernelFile kFile, int memSize) :
-    Executer(kFile, memSize)
+    Executer(kFile), MemSize(memSize)
 {
+    // 7. Create memory buffer
+    MemObject = clCreateBuffer(Context, CL_MEM_READ_WRITE, MemSize, nullptr, &ErrRet);
+    CheckStatus("clCreateBuffer", &ErrRet);
+    
     // 8. Create OpenCL kernel
     Kernel = clCreateKernel(Program, "hello", &ErrRet);
     CheckStatus("clCreateKernel", &ErrRet);
@@ -41,5 +45,5 @@ void MyExecuter::PrintResult()
 
 MyExecuter::~MyExecuter()
 {
-
+    clReleaseMemObject(MemObject);
 }

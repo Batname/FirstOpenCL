@@ -22,6 +22,8 @@ public:
     
 protected:
 private:
+    cl_mem MemObject = nullptr;
+    int MemSize;
 };
 
 

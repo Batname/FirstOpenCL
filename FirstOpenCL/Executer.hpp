@@ -26,7 +26,7 @@ public:
     };
     
 public:
-    explicit Executer(KernelFile kFile, int memSize);
+    explicit Executer(KernelFile kFile);
     ~Executer();
 protected:
     cl_int ErrRet;
@@ -44,13 +44,10 @@ protected:
     
     cl_context Context = nullptr;
     cl_command_queue CommandQueue = nullptr;
-    cl_mem MemObject = nullptr;
     cl_program Program = nullptr;
     
     cl_kernel Kernel = nullptr;
-    
-    int MemSize;
-    
+        
     virtual void CheckStatus(const char* Msg, cl_int* Err) const;
 private:
     friend class Informer;
